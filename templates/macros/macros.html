@@ -1,0 +1,9 @@
+{% macro create_card(data) %}
+    <div class="col-3 weather-card">
+        <img src="{{ data.Day.IconPhrase | scrub_img_tag }}">
+        <div>{{ data.Day.IconPhrase }}</div>
+        <div>Date: {{ data.EpochDate | strftime }}</div>
+        <div>Min Temp: {{ data.Temperature.Minimum.Value | convert_temp }}</div>
+        <div>Max Temp: {{ data.Temperature.Maximum.Value | convert_temp }}</div>
+    </div>
+{% endmacro %}

@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% from 'macros/macros.html' import create_card %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+        <main class="container my-4">
+            <h3 id="vertical-alignment">
+                <div>{{ title }}</div>
+            </h3>
+        <div class="page-content">
+            <div>
+                <section style="display: block" class="main-section">
+                </section>
+            </div>
+        </div>
+        <div class="weather-card-container">
+            <div class="row justify-content-around">
+                {% for i in range(3) %}
+                    {{ create_card(weather_data.DailyForecasts[i])}}
+                {% endfor %}
+            </div>
+        </div>
+        </main>
+{% endblock %}

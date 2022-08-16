@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block title %} Welcome to my Weather App {% endblock %}
+
+{% block content %}
+    <main class="container my-4">
+        <div class="page-content">
+            <div>
+                <section style="display: block" class="main-section">
+                    <div class="weather-card-container">
+                        <div style="display: flex; justify-content: space-around">
+                            <div>
+                                <div id="api_key" class="d-none">
+                                    <div style="color: white">
+                                        Your current API Key: {{ api_key }}
+                                    </div>
+                                    <div class="d-none" id="newAPIForm">
+                                        <form action="/change_api_key" method="post">
+                                            <label style="color: white" for="new_api_key">New API Key:</label>
+                                            <input type="text" name="new_api_key"><br><br>
+                                            <input type="submit" value="Submit">
+                                        </form>
+                                    </div>
+                                    <button id="changeAPIBtn"> Change API Key</button>
+                                </div>
+                                <button id="api_toggler">Show / Hide API Key Settings</button>
+                            </div>
+                            <div style="display: flex;
+    flex-direction: column;
+    align-items: center;">
+                                <div class="d-none" id="weatherForm">
+                                    <form action="/get_city_data" method="post" style="text-align: right">
+                                        <label style="color: white" for="city">City Name:</label>
+                                        <input type="text" name="city"><br>
+                                        <input type="submit" value="Submit">
+                                    </form>
+                                </div>
+                                <button id="weather_toggler">Check City Weather</button>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+{% endblock %}
+
+
+{% block scripts %}
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+{% endblock %}
